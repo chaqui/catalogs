@@ -1,4 +1,4 @@
-import System from "../models/system";
+import System from "../models/System";
 import { SystemStorage } from "../storage/System";
 
 export class SystemService {
@@ -8,7 +8,8 @@ export class SystemService {
     this.systemStorage = systemStorage;
   }
 
-  public saveSystem(system: System) {
-    console.log("Saving system", system);
+  public async saveSystem(system: System) {
+    console.log("Saving system:", system);
+    await this.systemStorage.create(system);
   }
 }

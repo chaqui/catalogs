@@ -1,7 +1,7 @@
 import { Collection, ObjectId,Document } from "mongodb";
 import * as dotenv from "dotenv";
 import Main from "./Main";
-import System from "../models/system";
+import System from "../models/System";
 
 
 export class SystemStorage extends Main {

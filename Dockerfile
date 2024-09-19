@@ -16,5 +16,7 @@ COPY . .
 # Expose the port that the application will listen on
 EXPOSE 3000
 
+RUN npm run test
+
 # Start the application
 CMD ["npm", "start"]
