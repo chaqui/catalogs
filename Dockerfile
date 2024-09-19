@@ -13,10 +13,11 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
+# Run tests to make sure everything is working
+RUN npm run test
+
 # Expose the port that the application will listen on
 EXPOSE 3000
-
-RUN npm run test
 
 # Start the application
 CMD ["npm", "start"]
