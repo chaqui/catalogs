@@ -22,3 +22,8 @@ logs/
 
 # Build output
 dist/
+
+.env
+
+package-lock.json
+coverage/

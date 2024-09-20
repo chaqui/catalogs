@@ -1,10 +1,12 @@
 {
   "name": "catalogos",
   "version": "1.0.0",
-  "description": "Gestor de catalogos para los sistemas ",
+  "description": "Catalog Manager for Systems",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "start": "npx ts-node ./index.ts"
   },
   "author": "",
@@ -16,6 +18,11 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.13",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }
 }
