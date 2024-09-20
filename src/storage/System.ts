@@ -59,6 +59,17 @@ export class SystemStorage extends Main {
       throw error;
     }
   }
+
+  async readAll(): Promise<any[]> {
+    try {
+      const collection = await this.connectToMongoDB();
+      const result = await collection.find().toArray();
+      return result;
+    } catch (error) {
+      console.error("Failed to read all systems:", error);
+      throw error;
+    }
+  }
 }
 
 export default SystemStorage;
