@@ -1,6 +1,7 @@
 import express from 'express';
 import routerSystem  from './src/routes/system';
-import { exceptionMiddleware, happyMiddleware } from './src/middlewares/ExceptionMiddlewares';
+import { customErrorMiddleware, errorMiddlleware, getLogErrorMiddleware } from './src/errors/ExceptionMiddlewares';
+
 const app = express();
 const port = 3000;
 
@@ -10,8 +11,9 @@ app.get('/', (req, res) => {
 });
 app.use('/system', routerSystem);
 
-app.use(happyMiddleware);
-app.use(exceptionMiddleware);
+app.use(getLogErrorMiddleware);
+app.use(customErrorMiddleware);
+app.use(errorMiddlleware);
 
 
 app.listen(port, () => {

@@ -78,3 +78,6 @@ For more detailed information, refer to the [Docker Compose documentation](https
     ```sh
     terraform output
     ```
+
+## Plugins VSCode
+ - Jest
