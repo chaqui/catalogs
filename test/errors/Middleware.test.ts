@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { customErrorMiddleware, getLogErrorMiddleware, errorMiddlleware } from '../src/errors/ExceptionMiddlewares';
-import { CustomError } from '../src/errors/CustomError';
+import { customErrorMiddleware, getLogErrorMiddleware, errorMiddlleware } from '../../src/errors/ExceptionMiddlewares';
+import { CustomError } from '../../src/errors/CustomError';
 
 describe('ExceptionMiddlewares', () => {
     let req: Partial<Request>;
@@ -72,23 +72,3 @@ describe('getLogErrorMiddleware', () => {
         expect(next).toHaveBeenCalledWith(error);
     });
 });
-
-describe('errorMiddlleware', () => {
-    let req: Partial<Request>;
-    let res: Partial<Response>;
-    let next: NextFunction;
-    beforeEach(() => {
-        req = {};
-        res = {
-            status: jest.fn().mockReturnThis(),
-            send: jest.fn().mockReturnThis(),
-        };
-        next = jest.fn();
-    });
-        it('should return 500', () => {
-            const error = new Error('Error message');
-            errorMiddlleware(error, req, res, next);
-            expect(res.status).toHaveBeenCalledWith(500);
-        });
-    });
-

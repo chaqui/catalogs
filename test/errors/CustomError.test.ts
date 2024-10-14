@@ -1,4 +1,4 @@
-import { CustomError } from '../src/errors/CustomError';
+import { CustomError } from '../../src/errors/CustomError';
 
 /**
  * Test suite for CustomError class

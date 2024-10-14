@@ -1,9 +1,9 @@
-import { SystemService } from "../src/services/System";
-import { SystemStorage } from "../src/storage/System";
-import System from "../src/models/System";
-import { CustomError } from "../src/errors/CustomError";
+import { SystemService } from "../../src/services/System";
+import { SystemStorage } from "../../src/storage/System";
+import System from "../../src/models/System";
+import { CustomError } from "../../src/errors/CustomError";
 
-jest.mock("../src/storage/System");
+jest.mock("../../src/storage/System");
 
 /**
  * Test suite for SystemService class
