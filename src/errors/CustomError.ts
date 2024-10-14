@@ -78,4 +78,13 @@ export class CustomError extends Error {
   static conflict(message: string) {
     return new CustomError(message, 409);
   }
+
+  /**
+   * Function to create a new CustomError object with status code 204 (No Content)
+   * @param message Message to be displayed
+   * @returns CustomError object with status code 204 (No Content) and the message
+   */
+  static notDataFound(message: string) {
+    return new CustomError(message, 204);
+  }
 }
