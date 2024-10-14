@@ -1,3 +1,6 @@
+import { HttpErrors } from "../constants/HttpErrors";
+
+
 /**
  * CustomError class to handle custom errors in the application
  */
@@ -31,7 +34,7 @@ export class CustomError extends Error {
    * @returns CustomError object with status code 400 (Bad Request) and the message
    */
   static badRequest(message: string) {
-    return new CustomError(message, 400);
+    return new CustomError(message, HttpErrors.BadRequest);
   }
 
   /**
@@ -40,7 +43,7 @@ export class CustomError extends Error {
    * @returns CustomError object with status code 404 (Not Found) and the message
    */
   static notFound(message: string) {
-    return new CustomError(message, 404);
+    return new CustomError(message, HttpErrors.NotFound);
   }
 
   /**
@@ -49,7 +52,7 @@ export class CustomError extends Error {
    * @returns CustomError object with status code 500 (Internal Server Error) and the message
    */
   static internalServerError(message: string) {
-    return new CustomError(message, 500);
+    return new CustomError(message, HttpErrors.InternalServerError);
   }
 
   /**
@@ -58,7 +61,7 @@ export class CustomError extends Error {
    * @returns CustomError object with status code 401 (Unauthorized) and the message
    */
   static unauthorized(message: string) {
-    return new CustomError(message, 401);
+    return new CustomError(message, HttpErrors.Unauthorized);
   }
 
   /**
@@ -67,7 +70,7 @@ export class CustomError extends Error {
    * @returns CustomError object with status code 403 (Forbidden) and the message
    */
   static forbidden(message: string) {
-    return new CustomError(message, 403);
+    return new CustomError(message, HttpErrors.Forbidden);
   }
 
   /**
@@ -76,7 +79,7 @@ export class CustomError extends Error {
    * @returns CustomError object with status code 409 (Conflict) and the message
    */
   static conflict(message: string) {
-    return new CustomError(message, 409);
+    return new CustomError(message, HttpErrors.Conflict);
   }
 
   /**
@@ -85,6 +88,6 @@ export class CustomError extends Error {
    * @returns CustomError object with status code 204 (No Content) and the message
    */
   static notDataFound(message: string) {
-    return new CustomError(message, 204);
+    return new CustomError(message, HttpErrors.NoContent);
   }
 }
