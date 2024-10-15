@@ -1,7 +1,7 @@
 import { SystemService } from "../../src/services/System";
 import { SystemStorage } from "../../src/storage/System";
 import System from "../../src/models/System";
-import { CustomError } from "../../src/errors/CustomError";
+import { CustomError } from "bokchalhandler/dist/CustomError";
 
 jest.mock("../../src/storage/System");
 

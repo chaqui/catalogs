@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import { SystemService } from "../services/System";
 import SystemStorage from "../storage/System";
-import { CustomError } from "../errors/CustomError";
+import { CustomError } from "bokchalhandler/dist/CustomError";
 const routerSystem = express.Router();
 
 const systemService = new SystemService(new SystemStorage());

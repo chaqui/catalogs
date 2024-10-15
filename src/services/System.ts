@@ -1,6 +1,6 @@
 import System from "../models/System";
 import { SystemStorage } from "../storage/System";
-import { CustomError } from "../errors/CustomError";
+import { CustomError } from "bokchalhandler/dist/CustomError";
 
 /**
  * Class to handle system related operations

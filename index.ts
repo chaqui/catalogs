@@ -3,7 +3,7 @@ import {
   customErrorMiddleware,
   errorMiddlleware,
   getLogErrorMiddleware,
-} from "./src/errors/ExceptionMiddlewares";
+} from "bokchalhandler";
 import { routerApiV1 } from "./src/routes/index";
 
 const app = express();
