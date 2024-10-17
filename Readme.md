@@ -6,6 +6,7 @@ This project uses Docker Compose to manage the application's services.
 
 - Docker
 - Docker Compose
+- Terraform
 
 ## Getting Started
 
@@ -57,3 +58,26 @@ docker-compose logs
 ```
 
 For more detailed information, refer to the [Docker Compose documentation](https://docs.docker.com/compose/).
+
+## Using Terraform
+1. Install Terraform
+2. Go to the terraform folder
+    ```sh
+    cd terraform
+    ```
+3. Run the following commands
+    ```sh
+    terraform init
+    terraform apply
+    ```
+4. To destroy the infrastructure run
+    ```sh
+    terraform destroy
+    ```
+5. To see the output of the terraform run
+    ```sh
+    terraform output
+    ```
+
+## Plugins VSCode
+ - Jest
