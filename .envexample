@@ -1,1 +1,9 @@
-DB_CONN_STRING="mongodb+srv://<username>:<password>@sandbox.jadwj.mongodb.net"
+DB_CONN_STRING=mongodb://mongodb:27017/catalogs
+DB_NAME=catalogs
+SYSTEMS_COLLECTION_NAME=systems
+MYSQL_ROOT_PASSWORD = root
+MYSQL_DATABASE = catalogs
+MYSQL_USER = root
+MYSQL_PASSWORD = root
+MYSQL_HOST = mysql
+MYSQL_PORT = 3306

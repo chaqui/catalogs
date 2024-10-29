@@ -12,12 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sequelize/core": "^7.0.0-alpha.42",
+    "@sequelize/mariadb": "^7.0.0-alpha.43",
     "bokchalhandler": "^1.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongodb": "^6.8.0",
-    "mysql2": "^3.11.3",
-    "sequelize": "^6.37.4"
+    "mongodb": "^6.8.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

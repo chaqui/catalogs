@@ -1,5 +1,5 @@
-import System from "../models/System";
-import { SystemStorage } from "../storage/System";
+import System from "../models/mongo/System.model";
+import SystemInterface from "../storage/inteface/System.interface";
 import { CustomError } from "bokchalhandler/dist/CustomError";
 
 /**
@@ -9,13 +9,13 @@ export class SystemService {
   /**
    * Storage to store system data
    */
-  systemStorage: SystemStorage;
+  systemStorage: SystemInterface;
 
   /**
    * Constructor to initialize system storage
    * @param systemStorage Storage to store system data
    */
-  constructor(systemStorage: SystemStorage) {
+  constructor(systemStorage: SystemInterface) {
     this.systemStorage = systemStorage;
   }
 

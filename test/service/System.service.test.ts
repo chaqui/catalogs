@@ -1,6 +1,6 @@
 import { SystemService } from "../../src/services/System";
-import { SystemStorage } from "../../src/storage/System";
-import System from "../../src/models/System";
+import { SystemStorage } from "../../src/storage/mongo/System.storage";
+import System from "../../src/models/mongo/System.model";
 import { CustomError } from "bokchalhandler/dist/CustomError";
 
 jest.mock("../../src/storage/System");
