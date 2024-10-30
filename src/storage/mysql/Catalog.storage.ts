@@ -1,5 +1,5 @@
 import { CustomError } from "bokchalhandler/dist/CustomError";
-import { Catalog } from "../../models/sql/Catalog.model";
+import Catalog from "../../models/sql/Catalog.model";
 import Main from "./Main";
 import CatalogStorageInterface from "../inteface/Catalog.interface";
 

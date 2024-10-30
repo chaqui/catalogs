@@ -1,24 +1,25 @@
 import { Sequelize } from "@sequelize/core";
 import { MariaDbDialect } from "@sequelize/mariadb";
 import * as dotenv from "dotenv";
-import { Catalog } from "../../models/sql/Catalog.model";
+import Catalog from "../../models/sql/Catalog.model";
 import { Item } from "../../models/sql/Item.model";
-
 
 export default class Main {
   sequelize: Sequelize;
   constructor() {
     dotenv.config();
     this.sequelize = new Sequelize({
-      dialect:  MariaDbDialect,
+      dialect: MariaDbDialect,
       host: process.env.MYSQL_HOST || "localhost",
       port: parseInt(process.env.MYSQL_PORT || "3306"),
       user: process.env.MYSQL_USER || "root",
       password: process.env.MYSQL_PASSWORD || "password",
       database: process.env.MYSQL_DATABASE || "catalogs",
       models: [Catalog, Item],
-    }
-    );
+    });
+
+    Catalog.initModel(this.sequelize);
+    Item.initModel(this.sequelize);
   }
 
   protected async connectToMariaDB(): Promise<void> {

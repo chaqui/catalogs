@@ -1,11 +1,12 @@
 import {
-  CreationOptional,
+  InferCreationAttributes,
   InferAttributes,
   Model,
   DataTypes,
-  InferCreationAttributes,
+  Sequelize,
   NonAttribute,
 } from "@sequelize/core";
+
 import {
   Attribute,
   PrimaryKey,
@@ -13,17 +14,18 @@ import {
   HasMany,
 } from "@sequelize/core/decorators-legacy";
 import { Item } from "./Item.model";
+import { MariaDbDialect } from "@sequelize/mariadb";
 
-export class Catalog extends Model<
+const sequelize = new Sequelize({ dialect: MariaDbDialect });
+export default class Catalog extends Model<
   InferAttributes<Catalog>,
   InferCreationAttributes<Catalog>
 > {
   @Attribute(DataTypes.INTEGER)
   @PrimaryKey
-  declare id: CreationOptional<number>;
+  declare id: number;
 
   @Attribute(DataTypes.STRING)
-  @NotNull
   declare name: string;
 
   @Attribute(DataTypes.STRING)
@@ -31,4 +33,29 @@ export class Catalog extends Model<
 
   @HasMany(() => Item, "catalogId")
   declare items: NonAttribute<Item[]>;
+
+  static initModel(sequelize: Sequelize) {
+    Catalog.init(
+      {
+        id: {
+          type: DataTypes.INTEGER,
+          primaryKey: true,
+          autoIncrement: true,
+        },
+        name: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        description: {
+          type: DataTypes.STRING,
+        },
+      },
+      {
+        sequelize,
+        modelName: "Catalog",
+        tableName: "catalogs",
+        timestamps: false,
+      }
+    );
+  }
 }
