@@ -1,10 +1,11 @@
 import { Sequelize } from "@sequelize/core";
 import { SqliteDialect } from "@sequelize/sqlite3";
-import Catalog from "../../src/models/sequelize/Catalog.model";
-import Item from "../../src/models/sequelize/Item.model";
+import Catalog from "../../../src/models/sequelize/Catalog.model";
+import Item from "../../../src/models/sequelize/Item.model";
 
 describe("Catalog Model", () => {
   let sequelize: Sequelize;
+  let catalog: Catalog;
 
   beforeAll(async () => {
     sequelize = new Sequelize({
@@ -15,6 +16,8 @@ describe("Catalog Model", () => {
 
     // Sync the database to ensure the models are initialized
     await sequelize.sync();
+
+    catalog = Catalog.build({ id: 1, name: "Test Catalog", description: "test" });
   });
 
   afterAll(async () => {
@@ -23,7 +26,7 @@ describe("Catalog Model", () => {
 
   it("should initialize the Catalog model", async () => {
     expect(Catalog).toBeDefined();
-    expect(Catalog.isInitialized).toBe(Catalog.isInitialized);
+    expect(Catalog.isInitialized).toBe(Catalog.isInitialized );
   });
 
   it("should create a new catalog entry", async () => {

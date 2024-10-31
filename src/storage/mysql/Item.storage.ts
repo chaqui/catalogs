@@ -1,4 +1,4 @@
-import { Item } from "../../models/sql/Item.model";
+import { Item } from "../../models/sequelize/Item.model";
 import Main from "./Main";
 
 

@@ -42,9 +42,7 @@ export class SystemService {
    * @returns System object
    */
   public async getSystem(id: string): Promise<System> {
-    console.log(id);
     const system = await this.systemStorage.read(id);
-    console.log(system);
     if(!system) {
       throw CustomError.notFound("System not found");
     }
