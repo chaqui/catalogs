@@ -1,13 +1,13 @@
-CREATE DATABASE Catalogs;
+CREATE IF NOT EXISTS SCHEMA Catalogs;
 
-CREATE TABLE Catalogs.Catalogs
+CREATE IF NOT EXISTS TABLE Catalogs.Catalogs
 (
     id INT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     description VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE Catalogs.item
+CREATE IF NOT EXISTS TABLE Catalogs.item
 (
     id INT PRIMARY KEY, 
     value STRING NOT NULL,

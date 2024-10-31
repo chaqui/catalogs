@@ -1,19 +1,25 @@
 import { Sequelize } from "@sequelize/core";
 import { SqliteDialect } from "@sequelize/sqlite3";
-import Catalog from "../../src/models/sequelize/Catalog.model";
-import Item from "../../src/models/sequelize/Item.model";
+import CatalogStorage from "../../src/storage/mysql/Catalog.storage";
+import { CatalogService } from "../../src/services/Catalog";
+import { CustomError } from "bokchalhandler/dist/CustomError";
 
-describe("Catalog Model", () => {
+jest.mock("../../src/storage/mysql/Catalog.storage");
+
+describe("Catalog Service", () => {
   let sequelize: Sequelize;
+  let catalogStorage: CatalogStorage;
+  let catalogService: CatalogService;
 
   beforeAll(async () => {
     sequelize = new Sequelize({
       dialect: SqliteDialect,
       storage: "sequelize.sqlite",
-      models: [Catalog, Item], // Pass the models here
     });
 
-    // Sync the database to ensure the models are initialized
+    catalogStorage = new CatalogStorage();
+    catalogService = new CatalogService(catalogStorage);
+
     await sequelize.sync();
   });
 
@@ -21,45 +27,45 @@ describe("Catalog Model", () => {
     await sequelize.close();
   });
 
-  it("should initialize the Catalog model", async () => {
-    expect(Catalog).toBeDefined();
-    expect(Catalog.isInitialized).toBe(Catalog.isInitialized);
+  it("should get all catalogs", async () => {
+    const catalogs = [
+      { id: 1, name: "Catalog 1", description: "Description 1" },
+      { id: 2, name: "Catalog 2", description: "Description 2" }
+    ];
+    catalogStorage.getCatalogs = jest.fn().mockResolvedValue(catalogs);
+    const result = await catalogService.getCatalogs();
+    expect(result).toEqual(catalogs);
   });
 
-  it("should create a new catalog entry", async () => {
-    await sequelize.sync({ force: true });
-    const catalogRequest = await Catalog.create({ id: 1, name: "Test Catalog", description: "test" });
-    expect(catalogRequest).toBeDefined();
-    expect(catalogRequest.name).toBe("Test Catalog");
+  it("should throw error when get all catalogs", async () => {
+    catalogStorage.getCatalogs = jest.fn().mockRejectedValue(
+      CustomError.notDataFound("Catalogs not found")
+    );
+    await expect(catalogService.getCatalogs()).rejects.toThrow("Catalogs not found");
   });
 
-  it("should find a catalog entry by ID", async () => {
-    await sequelize.sync({ force: true });
-
-    const catalogRequest = await Catalog.create({ id: 1, name: "Test Catalog", description: "test" });
-    const foundCatalog = await Catalog.findByPk(catalogRequest.id);
-    expect(foundCatalog).toBeDefined();
-    expect(foundCatalog?.name).toBe("Test Catalog");
+  it("should get items by catalogId", async () => {
+    const items = [
+      { id: 1, value: "Item 1", description: "Description 1", catalogId: 1 },
+      { id: 2, value: "Item 2", description: "Description 2", catalogId: 1 }
+    ];
+    catalogStorage.getItemsByCatalogId = jest.fn().mockResolvedValue(items);
+    const result = await catalogService.getItemsByCatalogId(1);
+    expect(result).toEqual(items);
   });
 
-  it("should update a catalog entry", async () => {
-    await sequelize.sync({ force: true });
-
-    const catalogRequest = await Catalog.create({ id: 1, name: "Test Catalog", description: "test" });
-    catalogRequest.name = "Updated Catalog";
-    await catalogRequest.save();
-
-    const updatedCatalog = await Catalog.findByPk(catalogRequest.id);
-    expect(updatedCatalog?.name).toBe("Updated Catalog");
+  it("should throw error when get items by catalogId", async () => {
+    catalogStorage.getItemsByCatalogId = jest.fn().mockRejectedValue(
+      CustomError.notDataFound("Items not found")
+    );
+    await expect(catalogService.getItemsByCatalogId(1)).rejects.toThrow("Items not found");
   });
 
-  it("should delete a catalog entry", async () => {
-    await sequelize.sync({ force: true });
-
-    const catalogRequest = await Catalog.create({ id: 1, name: "Test Catalog", description: "test" });
-    await catalogRequest.destroy();
-
-    const deletedCatalog = await Catalog.findByPk(catalogRequest.id);
-    expect(deletedCatalog).toBeNull();
+  it("should throw error when get items by catalogId", async () => {
+    catalogStorage.getItemsByCatalogId = jest.fn().mockRejectedValue(
+      CustomError.notDataFound("Items not found")
+    );
+    await expect(catalogService.getItemsByCatalogId(1)).rejects.toThrow("Items not found");
   });
+  
 });

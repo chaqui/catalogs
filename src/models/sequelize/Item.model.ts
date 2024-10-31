@@ -1,20 +1,16 @@
-import {
+import { 
   InferCreationAttributes,
   InferAttributes,
-  Model,
+  Model, 
   DataTypes,
-  Sequelize,
+  Sequelize
 } from "@sequelize/core";
-import {
-  Attribute,
-  PrimaryKey,
-  NotNull,
-} from "@sequelize/core/decorators-legacy";
-import { MariaDbDialect } from "@sequelize/mariadb";
+import { Attribute, PrimaryKey } from '@sequelize/core/decorators-legacy';
 
-const sequelize = new Sequelize({ dialect: MariaDbDialect });
-export default class Item extends Model
-{
+export default class Item extends Model<
+  InferAttributes<Item>,
+  InferCreationAttributes<Item>
+> {
   @Attribute(DataTypes.INTEGER)
   @PrimaryKey
   declare id: number;

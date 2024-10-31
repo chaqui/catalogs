@@ -5,7 +5,7 @@ import Item from "../../../src/models/sequelize/Item.model";
 
 describe("Catalog Model", () => {
   let sequelize: Sequelize;
-  let catalog: Catalog;
+  let catalog: any;
 
   beforeAll(async () => {
     sequelize = new Sequelize({
@@ -17,7 +17,7 @@ describe("Catalog Model", () => {
     // Sync the database to ensure the models are initialized
     await sequelize.sync();
 
-    catalog = Catalog.build({ id: 1, name: "Test Catalog", description: "test" });
+    catalog = { id: 1, name: "Test Catalog", description: "test" };
   });
 
   afterAll(async () => {
@@ -31,7 +31,7 @@ describe("Catalog Model", () => {
 
   it("should create a new catalog entry", async () => {
     await sequelize.sync({ force: true });
-    const catalogRequest = await Catalog.create({ id: 1, name: "Test Catalog", description: "test" });
+    const catalogRequest = await Catalog.create({ id: Math.floor(Math.random() * 100), name: "Test Catalog", description: "test" });
     expect(catalogRequest).toBeDefined();
     expect(catalogRequest.name).toBe("Test Catalog");
   });
@@ -59,7 +59,7 @@ describe("Catalog Model", () => {
   it("should delete a catalog entry", async () => {
     await sequelize.sync({ force: true });
 
-    const catalogRequest = await Catalog.create({ id: 1, name: "Test Catalog", description: "test" });
+    const catalogRequest = await Catalog.create(catalog);
     await catalogRequest.destroy();
 
     const deletedCatalog = await Catalog.findByPk(catalogRequest.id);

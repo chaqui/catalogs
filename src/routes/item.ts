@@ -1,6 +1,11 @@
 import express, { NextFunction, Request, Response } from "express";
+import ItemStorage from "../storage/mysql/Item.storage";
+import ItemService from "../services/Item";
 
 const routerItem = express.Router();
+
+const itemStorage = new ItemStorage();
+const itemService = new ItemService(itemStorage);
 
 /**
  * Function to get all items from the item storage and return the items
@@ -13,7 +18,8 @@ const routerItem = express.Router();
  */
 routerItem.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    res.status(200).send("Items");
+    const items = await itemService.getItems();
+    res.status(200).json(items);
   } catch (error) {
     next(error);
   }

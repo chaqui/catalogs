@@ -1,3 +1,4 @@
+import { CustomError } from "bokchalhandler/dist/CustomError";
 import CatalogStorageInterface from "../storage/inteface/Catalog.interface";
 
 
@@ -6,10 +7,18 @@ export class CatalogService {
     constructor(catalogStorage: CatalogStorageInterface) {
         this.catalogStorage = catalogStorage;
     }
-    async getCatalogs() {
-        return await this.catalogStorage.getCatalogs();
+    async getCatalogs(): Promise<any> {
+        const catalogs = await this.catalogStorage.getCatalogs();
+        if (!catalogs || catalogs.length === 0) {
+            throw CustomError.notDataFound("Catalogs not found");
+        }
+        return catalogs;
     }
     async getItemsByCatalogId(catalogId: number) {
-        return await this.catalogStorage.getItemsByCatalogId(catalogId);
+        const items = await this.catalogStorage.getItemsByCatalogId(catalogId);
+        if (!items || items.length === 0) {
+            throw CustomError.notDataFound("Items not found");
+        }
+        return items;
     }
 }

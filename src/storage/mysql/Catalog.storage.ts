@@ -6,7 +6,7 @@ import CatalogStorageInterface from "../inteface/Catalog.interface";
 export default class CatalogStorage implements CatalogStorageInterface {
   
 
-  async getCatalogs() {
+  async getCatalogs(): Promise<any> {
     try {
       const catalogs = await Catalog.findAll();
       return catalogs;
