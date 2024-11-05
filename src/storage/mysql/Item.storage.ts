@@ -1,5 +1,5 @@
 import  Item  from "../../models/sequelize/Item.model";
-import ItemStorageInterface from "../inteface/Item.interface";
+import ItemStorageInterface from "../interface/Item.interface";
 import Main from "./Main";
 
 

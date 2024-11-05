@@ -5,7 +5,8 @@ import {
   DataTypes,
   Sequelize
 } from "@sequelize/core";
-import { Attribute, PrimaryKey } from '@sequelize/core/decorators-legacy';
+import { Attribute, PrimaryKey, BelongsTo } from '@sequelize/core/decorators-legacy';
+import Catalog from "./Catalog.model";
 
 export default class Item extends Model<
   InferAttributes<Item>,

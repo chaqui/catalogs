@@ -1,7 +1,7 @@
 import { CustomError } from "bokchalhandler/dist/CustomError";
 import Catalog from "../../models/sequelize/Catalog.model";
 import "./Main";
-import CatalogStorageInterface from "../inteface/Catalog.interface";
+import CatalogStorageInterface from "../interface/Catalog.interface";
 
 export default class CatalogStorage implements CatalogStorageInterface {
   

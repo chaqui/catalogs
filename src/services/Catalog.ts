@@ -1,5 +1,5 @@
 import { CustomError } from "bokchalhandler/dist/CustomError";
-import CatalogStorageInterface from "../storage/inteface/Catalog.interface";
+import CatalogStorageInterface from "../storage/interface/Catalog.interface";
 
 
 export class CatalogService {

@@ -1,5 +1,5 @@
 import { CustomError } from "bokchalhandler/dist/CustomError";
-import ItemStorageInterface from "../storage/inteface/Item.interface";
+import ItemStorageInterface from "../storage/interface/Item.interface";
 import Item from "../models/sequelize/Item.model";
 
 

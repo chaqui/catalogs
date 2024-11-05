@@ -9,6 +9,14 @@ services:
       - "3000:3000"
     depends_on:
       - mongodb
+      - mysql
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MONGODB_URI: mongodb://mongodb:27017/${MONGODB_DATABASE}
 
   mongodb:
     image: mongo:latest
@@ -16,8 +24,9 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+
   mysql:
-    image: mysql:latest
+    image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -27,6 +36,15 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    command: >
+      bash -c "
+      echo 'CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};' > /docker-entrypoint-initdb.d/init.sql &&
+      echo 'CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';' >> /docker-entrypoint-initdb.d/init.sql &&
+      echo 'GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';' >> /docker-entrypoint-initdb.d/init.sql &&
+      echo 'FLUSH PRIVILEGES;' >> /docker-entrypoint-initdb.d/init.sql &&
+      docker-entrypoint.sh mysqld
+      "
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
@@ -34,8 +52,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
       - "8080:80"
-    depends_on:
-      - mysql
 
 volumes:
   mongo-data:

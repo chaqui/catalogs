@@ -1,5 +1,5 @@
 import System from "../models/mongo/System.model";
-import SystemInterface from "../storage/inteface/System.interface";
+import SystemInterface from "../storage/interface/System.interface";
 import { CustomError } from "bokchalhandler/dist/CustomError";
 
 /**

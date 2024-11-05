@@ -2,7 +2,7 @@ import { Collection, ObjectId,Document } from "mongodb";
 import * as dotenv from "dotenv";
 import Main from "./Main";
 import System from "../../models/mongo/System.model";
-import SystemCatalogInterface from "../inteface/System.interface";
+import SystemCatalogInterface from "../interface/System.interface";
 
 
 export class SystemStorage extends Main implements SystemCatalogInterface {
