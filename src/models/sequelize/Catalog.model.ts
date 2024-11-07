@@ -5,9 +5,12 @@ import {
   DataTypes,
   Sequelize
 } from "@sequelize/core";
-import { Attribute, PrimaryKey, HasMany } from '@sequelize/core/decorators-legacy';
+import { Attribute, PrimaryKey, HasMany, Table } from '@sequelize/core/decorators-legacy';
 import Item from "./Item.model";
 
+@Table({
+  tableName: 'catalogs' 
+})
 export default class Catalog extends Model<
   InferAttributes<Catalog>,
   InferCreationAttributes<Catalog>

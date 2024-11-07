@@ -5,9 +5,12 @@ import {
   DataTypes,
   Sequelize
 } from "@sequelize/core";
-import { Attribute, PrimaryKey, BelongsTo } from '@sequelize/core/decorators-legacy';
+import { Attribute, PrimaryKey, BelongsTo , Table} from '@sequelize/core/decorators-legacy';
 import Catalog from "./Catalog.model";
 
+@Table({
+  tableName: 'item'
+})
 export default class Item extends Model<
   InferAttributes<Item>,
   InferCreationAttributes<Item>
@@ -22,7 +25,9 @@ export default class Item extends Model<
   @Attribute(DataTypes.STRING)
   declare description: string;
 
-  @Attribute(DataTypes.INTEGER)
+  @Attribute({type:DataTypes.INTEGER,
+    field: 'catalog_id'}
+  )
   declare catalogId: number;
 
 }

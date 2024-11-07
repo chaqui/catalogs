@@ -2,6 +2,7 @@ import { CustomError } from "bokchalhandler/dist/CustomError";
 import Catalog from "../../models/sequelize/Catalog.model";
 import "./Main";
 import CatalogStorageInterface from "../interface/Catalog.interface";
+import Item from "../../models/sequelize/Item.model";
 
 export default class CatalogStorage implements CatalogStorageInterface {
   
@@ -22,8 +23,7 @@ export default class CatalogStorage implements CatalogStorageInterface {
       if (!catalog) {
         throw CustomError.notFound("Catalog not found");
       }
-      const items = await catalog.items;
-
+      const items = await Item.findAll({ where: { catalogId } });
       return items;
     } catch (error) {
       console.error("Error getting items by catalogId:", error);
