@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import { SystemService } from "../services/System";
-import SystemStorage from "../storage/System";
+import SystemStorage from "../storage/mongo/System.storage";
 import { CustomError } from "bokchalhandler/dist/CustomError";
 const routerSystem = express.Router();
 
