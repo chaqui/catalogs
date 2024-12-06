@@ -44,4 +44,12 @@ describe("Item Service", () => {
     );
     await expect(itemService.getItems()).rejects.toThrow("Items not found");
   });
+
+  it("should get item by id", async () => {
+    const item = { id: 1, value: "Item 1", description: "Description 1", catalogId: 1 };
+    itemStorage.getItemById = jest.fn().mockResolvedValue(item);
+    const result = await itemService.getItemById(1);
+    expect(result).toEqual(item);
+  });
+
 });

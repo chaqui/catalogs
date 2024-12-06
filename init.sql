@@ -19,7 +19,9 @@ CREATE TABLE IF NOT EXISTS catalogs.item
     value VARCHAR(200) NOT NULL,  -- Corrected from 2OO to 200
     description VARCHAR(100),
     catalog_id INT NOT NULL,
-    FOREIGN KEY (catalog_id) REFERENCES catalogs.catalogs(id)
+    item_id INT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (catalog_id) REFERENCES catalogs.catalogs(id),
+    FOREIGN KEY (item_id) REFERENCES catalogs.items(id),
 );

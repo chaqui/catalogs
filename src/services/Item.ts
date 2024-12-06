@@ -14,6 +14,14 @@ export default class ItemService {
         return items;
         
     }
+
+    async getItemById(id: number): Promise<Item> {
+        const item = await this.itemStorage.getItemById(id);
+        if(!item){
+            throw CustomError.notDataFound("Item not found");
+        }
+        return item;
+    }
 }
 
 

@@ -30,4 +30,9 @@ export default class Item extends Model<
   )
   declare catalogId: number;
 
+  @Attribute({type:DataTypes.INTEGER,
+    field: 'item_id'}
+  )
+  declare itemId: number;
+
 }

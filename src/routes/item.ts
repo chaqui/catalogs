@@ -25,4 +25,13 @@ routerItem.get("/", async (req: Request, res: Response, next: NextFunction) => {
   }
 });
 
+routerItem.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const item = await itemService.getItemById(Number(req.params.id));
+    res.status(200).json(item);
+  } catch (error) {
+    next(error);
+  }});
+
+
 export default routerItem;

@@ -3,6 +3,7 @@ import { SqliteDialect } from "@sequelize/sqlite3";
 import CatalogStorage from "../../src/storage/mysql/Catalog.storage";
 import { CatalogService } from "../../src/services/Catalog";
 import { CustomError } from "bokchalhandler/dist/CustomError";
+import ItemStorage from "../../src/storage/mysql/Item.storage";
 
 jest.mock("../../src/storage/mysql/Catalog.storage");
 
@@ -10,6 +11,7 @@ describe("Catalog Service", () => {
   let sequelize: Sequelize;
   let catalogStorage: CatalogStorage;
   let catalogService: CatalogService;
+  let itemStorage: ItemStorage;
 
   beforeAll(async () => {
     sequelize = new Sequelize({
@@ -18,7 +20,9 @@ describe("Catalog Service", () => {
     });
 
     catalogStorage = new CatalogStorage();
-    catalogService = new CatalogService(catalogStorage);
+    itemStorage = new ItemStorage();
+
+    catalogService = new CatalogService(catalogStorage,itemStorage);
 
     await sequelize.sync();
   });
@@ -66,6 +70,16 @@ describe("Catalog Service", () => {
       CustomError.notDataFound("Items not found")
     );
     await expect(catalogService.getItemsByCatalogId(1)).rejects.toThrow("Items not found");
+  });
+
+  it("should get items by idItemProvider and idCatalog", async () => {
+    const items = [
+      { id: 1, value: "Item 1", description: "Description 1", catalogId: 1 },
+      { id: 2, value: "Item 2", description: "Description 2", catalogId: 1 }
+    ];
+    itemStorage.getItemsByIdItemProvider = jest.fn().mockResolvedValue(items);
+    const result = await catalogService.getItemsByIdItemProvider(1, 1);
+    expect(result).toEqual(items);
   });
   
 });
