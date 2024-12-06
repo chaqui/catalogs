@@ -5,21 +5,19 @@ import {
   getLogErrorMiddleware,
 } from "bokchalhandler";
 import cors from "cors";
+import * as dotenv from "dotenv";
+
 import { routerApiV1 } from "./src/routes/index";
+import getCorsOptions from "./src/config/corsConfig";
 
-const app = express();
+dotenv.config();
 const port = 3000;
+const app = express();
+const env = process.env.MODE_ENV || "development";
+const corsOptions = getCorsOptions(env);
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (origin && /^http:\/\/localhost:\d+$/.test(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  }
-}));
 
+app.use(cors(corsOptions));
 app.use(express.json());
 
 routerApiV1(app);

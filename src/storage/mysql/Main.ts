@@ -4,6 +4,7 @@ import * as dotenv from "dotenv";
 import Catalog from "../../models/sequelize/Catalog.model";
 import Item from "../../models/sequelize/Item.model";
 
+dotenv.config();
 
 const sequelize = new Sequelize({
       dialect: MariaDbDialect,
