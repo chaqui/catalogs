@@ -7,6 +7,7 @@ INSERT INTO catalogs.catalogs (id, name, description) VALUES (5, 'Genero', 'Geen
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (6, 'Estado Civil', 'Estados civiles de personas');
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (7, 'Departamentos', 'Departamentos de Guatemala');
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (8, 'Municipios', 'Municipios de Guatemala');
+INSERT INTO catalogs.catalogs (id, name, description) VALUES (9, 'Tipos de Cliente', 'Tipos de Cliente Entidad Financiera');
 
 
 
@@ -422,3 +423,6 @@ INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (3
 INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (387, 'Sanarate', 'Municipio de Sanarate', 8, 74);
 INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (388, 'Sansare', 'Municipio de Sansare', 8, 74);
 INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (389, 'an Antonio La Paz', 'Municipio de an Antonio La Paz', 8, 74);
+
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (390, 'Comerciante', 'Comerciante', 9);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (391, 'Asalariado', 'Persona que labora para una organizacion', 9);
