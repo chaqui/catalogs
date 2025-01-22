@@ -3,11 +3,13 @@ INSERT INTO catalogs.catalogs (id, name, description) VALUES (1, 'Medidas de Pes
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (2, 'Medidas de Longitud', 'Medidas de Longitud en sistema métrico');
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (3, 'Medidas de Volumen', 'Medidas de Volumen en sistema métrico');
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (4, 'Medidas de Tiempo', 'Medidas de Tiempo en sistema métrico');
-INSERT INTO catalogs.catalogs (id, name, description) VALUES (5, 'Genero', 'Geeneros de personas');
+INSERT INTO catalogs.catalogs (id, name, description) VALUES (5, 'Genero', 'Generos de personas');
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (6, 'Estado Civil', 'Estados civiles de personas');
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (7, 'Departamentos', 'Departamentos de Guatemala');
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (8, 'Municipios', 'Municipios de Guatemala');
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (9, 'Tipos de Cliente', 'Tipos de Cliente Entidad Financiera');
+INSERT INTO catalogs.catalogs (id, name, description) VALUES (10, 'Tipos de Productos Farmaceuticos', 'Tipos de Productos Farmaceuticos');
+INSERT INTO catalogs.catalogs (id, name, description) VALUES (11, 'Tipos de Cuentas', 'Tipos de Cuentas Bancarias');
 
 
 
@@ -89,7 +91,6 @@ INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (6
 INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (70, 'Sumpango', 'Municipio de Sumpango', 8, 20);
 INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (71, 'Santo Domingo Xenacoj', 'Municipio de Santo Domingo Xenacoj', 8, 20);
 INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (72, 'Alotenango', 'Municipio de Alotenango', 8, 20);
-INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (73, 'Ciudad Vieja', 'Municipio de Alotenango', 8, 20);
 INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (73, 'Ciudad Vieja', 'Municipio de Alotenango', 8, 20);
 
 INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (76, 'San Juan Comalapa', 'Municipio de San Juan Comalapa', 8, 21);
@@ -426,3 +427,24 @@ INSERT INTO catalogs.item (id, value, description, catalog_id,item_id) VALUES (3
 
 INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (390, 'Comerciante', 'Comerciante', 9);
 INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (391, 'Asalariado', 'Persona que labora para una organizacion', 9);
+
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (392, 'Pastilla', 'Pastilla', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (393, 'Jarabe', 'Jarabe', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (394, 'Inyección', 'Inyección', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (395, 'Crema', 'Crema', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (396, 'Tableta', 'Tableta', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (397, 'Cápsula', 'Cápsula', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (398, 'Polvo', 'Polvo', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (399, 'Gotas', 'Gotas', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (400, 'Supositorio', 'Supositorio', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (401, 'Solución', 'Solución', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (402, 'Suspensión', 'Suspensión', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (403, 'Aerosol', 'Aerosol', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (404, 'Gel', 'Gel', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (405, 'Loción', 'Loción', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (406, 'Pomada', 'Pomada', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (407, 'Óvulo', 'Óvulo', 10);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (408, 'Colirio', 'Colirio', 10);
+
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (409, 'Monetaria', 'Cuenta Monetaria', 11);
+INSERT INTO catalogs.item (id, value, description, catalog_id) VALUES (410, 'Ahorro', 'Cuenta de Ahorro', 11);
