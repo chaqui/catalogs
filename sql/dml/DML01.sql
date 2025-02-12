@@ -1,3 +1,29 @@
+CREATE DATABASE IF NOT EXISTS catalogs;
+CREATE TABLE IF NOT EXISTS catalogs.catalogs (
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(100) NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+SELECT * FROM catalogs.catalogs;
+
+DROP TABLE IF EXISTS catalogs.items;
+CREATE TABLE IF NOT EXISTS catalogs.item (
+    id INT PRIMARY KEY, 
+    value VARCHAR(200) NOT NULL,
+    description VARCHAR(100),
+    catalog_id INT NOT NULL,
+    item_id INT,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (catalog_id) REFERENCES catalogs.catalogs(id),
+    FOREIGN KEY (item_id) REFERENCES catalogs.item(id)
+);
+
+SELECT * FROM catalogs.item;
+
 
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (1, 'Medidas de Peso', 'Medidas de Peso en sistema métrico e internacional');
 INSERT INTO catalogs.catalogs (id, name, description) VALUES (2, 'Medidas de Longitud', 'Medidas de Longitud en sistema métrico');
