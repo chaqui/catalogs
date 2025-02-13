@@ -9,7 +9,8 @@ import { Attribute, PrimaryKey, HasMany, Table } from '@sequelize/core/decorator
 import Item from "./Item.model";
 
 @Table({
-  tableName: 'catalogs' 
+  tableName: 'catalogs' ,
+  schema: 'catalogs'
 })
 export default class Catalog extends Model<
   InferAttributes<Catalog>,
