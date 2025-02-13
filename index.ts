@@ -8,13 +8,14 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 
 import { routerApiV1 } from "./src/routes/index";
-import getCorsOptions from "./src/config/corsConfig";
+import corsOptions from "./src/config/corsConfig";
+
 
 dotenv.config();
 const port = 3000;
 const app = express();
 const env = process.env.MODE_ENV || "development";
-const corsOptions = getCorsOptions(env);
+
 
 
 app.use(cors(corsOptions));
