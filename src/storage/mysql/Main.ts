@@ -17,7 +17,9 @@ if (database === "postgres") {
     user: process.env.DB_USERNAME || "root",
     password: process.env.DB_PASSWORD || "password",
     database: process.env.DB_DATABASE || "catalogs",
-    ssl: false,
+    ssl: {
+      rejectUnauthorized: false,
+    },
     clientMinMessages: "notice",
     models: [Catalog, Item],
   });

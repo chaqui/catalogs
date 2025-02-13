@@ -5,7 +5,7 @@ import {
   DataTypes,
   Sequelize
 } from "@sequelize/core";
-import { Attribute, PrimaryKey, BelongsTo , Table} from '@sequelize/core/decorators-legacy';
+import { Attribute, PrimaryKey, BelongsTo , Table, ColumnName} from '@sequelize/core/decorators-legacy';
 import Catalog from "./Catalog.model";
 
 @Table({
@@ -35,5 +35,13 @@ export default class Item extends Model<
     field: 'item_id'}
   )
   declare itemId: number;
+
+    @Attribute(DataTypes.DATE)
+    @ColumnName('createdat')
+    declare createdAt: Date;
+  
+    @Attribute(DataTypes.DATE)
+    @ColumnName('updatedat')
+    declare updatedAt: Date;
 
 }

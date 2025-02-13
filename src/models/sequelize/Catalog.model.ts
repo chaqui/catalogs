@@ -5,7 +5,7 @@ import {
   DataTypes,
   Sequelize
 } from "@sequelize/core";
-import { Attribute, PrimaryKey, HasMany, Table } from '@sequelize/core/decorators-legacy';
+import { Attribute, PrimaryKey, HasMany, Table, ColumnName } from '@sequelize/core/decorators-legacy';
 import Item from "./Item.model";
 
 @Table({
@@ -25,6 +25,14 @@ export default class Catalog extends Model<
 
   @Attribute(DataTypes.STRING)
   declare description: string;
+
+  @Attribute(DataTypes.DATE)
+  @ColumnName('createdat')
+  declare createdAt: Date;
+
+  @Attribute(DataTypes.DATE)
+  @ColumnName('updatedat')
+  declare updatedAt: Date;
 
   @HasMany(() => Item, 'catalogId')
   declare items?: Item[];
