@@ -12,11 +12,11 @@ let sequelize;
 if (database === "postgres") {
   sequelize = new Sequelize({
     dialect: PostgresDialect,
-    host: process.env.PG_HOST || "localhost",
-    port: parseInt(process.env.PG_PORT || "5432"),
-    user: process.env.PG_USER || "root",
-    password: process.env.PG_PASSWORD || "password",
-    database: process.env.PG_DATABASE || "catalogs",
+    host: process.env.DB_HOST || "localhost",
+    port: parseInt(process.env.DB_PORT || "5432"),
+    user: process.env.DB_USERNAME || "root",
+    password: process.env.DB_PASSWORD || "password",
+    database: process.env.DB_DATABASE || "catalogs",
     ssl: true,
     clientMinMessages: "notice",
     models: [Catalog, Item],
