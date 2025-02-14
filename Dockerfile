@@ -13,7 +13,7 @@ RUN npm install
 COPY . .
 
 # Compilar el proyecto para producción
-RUN npm run build
+RUN npm run build:prod
 
 FROM node:20-alpine
 
