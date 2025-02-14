@@ -7,14 +7,14 @@ services:
       - "3000:3000"
     depends_on:
       - mongodb
-      - mysql
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MONGODB_URI: mongodb://mongodb:27017/${MONGODB_DATABASE}
+      DB: postgres
+      DB_HOST: ls-a4e9b0ea6d8ec0b0f5963b949783d404e86778be.cj4aisyocga4.us-east-2.rds.amazonaws.com
+      DB_PORT: 5432
+      APP_DEBUG: false
+      DB_DATABASE: postgres
+      DB_USERNAME: dbmasteruser
+      DB_PASSWORD: "F~}80=KS[S1^D5&:xPU=pQt[Zq.)!s*z"
 
   mongodb:
     image: mongo:latest

@@ -1,23 +1,33 @@
 # Use the official Node.js 14 image as the base image
 FROM node:20-alpine
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Copiar los archivos de package.json y package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# Instalar las dependencias
 RUN npm install
 
-# Copy the rest of the application code to the working directory
+# Copiar el resto de los archivos del proyecto
 COPY . .
 
-RUN npm rebuild && npm run test
+# Compilar el proyecto para producción
+RUN npm run build
 
+FROM node:20-alpine
 
-# Expose the port that the application will listen on
+WORKDIR /app
+
+# Copiar los archivos compilados desde la etapa de construcción
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package*.json ./
+
+# Instalar solo las dependencias de producción
+RUN npm install --only=production
+
+# Exponer el puerto en el que la aplicación se ejecutará
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+# Comando para iniciar la aplicación
+CMD ["node", "dist/index.js"]
