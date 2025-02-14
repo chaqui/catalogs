@@ -1,5 +1,5 @@
 # Use the official Node.js 14 image as the base image
-FROM node:20-alpine
+FROM node:20-alpine AS build
 
 WORKDIR /app
 
