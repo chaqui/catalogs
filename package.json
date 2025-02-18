@@ -19,6 +19,7 @@
     "@sequelize/mariadb": "^7.0.0-alpha.43",
     "@sequelize/postgres": "^7.0.0-alpha.43",
     "@sequelize/sqlite3": "^7.0.0-alpha.43",
+    "axios": "^1.7.9",
     "bokchalhandler": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
