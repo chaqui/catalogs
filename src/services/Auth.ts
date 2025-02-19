@@ -1,22 +1,18 @@
-import axios from "axios";
 import * as dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
-const serviceCore = process.env.SERVICE_CORE;
+const secretKey = process.env.JWT_SECRET_KEY || "your-secret-key";
 
-export async function validateToken(token: string): Promise<any> {
-  const url = `${serviceCore}/api/validate-token`;
-  console.log(url);
+
+export function validateToken(token: string): any {
   try {
-    const response = await axios.get(url, {
-      headers: {
-        Authorization: token,
-      },
-    });
-    return response;
+    // Verificar y decodificar el token
+    const decoded = jwt.verify(token, secretKey);
+    console.log(decoded);
+    return true;
   } catch (error) {
-    console.error("Error validating token:", error);
-    throw error;
+    return false;
   }
 }

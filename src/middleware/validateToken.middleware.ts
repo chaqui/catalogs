@@ -25,15 +25,7 @@ export function validateTokenMiddleware(
     res.status(401).send("Unauthorized");
     return;
   }
-  try {
-    validateToken(token).then((response) => {
-      if (response.status === 401) {
-        res.status(401).send("Unauthorized");
-        return;
-      }
-      next();
-    });
-  } catch (error) {
+  if (!validateToken(head[1])) {
     res.status(401).send("Unauthorized");
     return;
   }
