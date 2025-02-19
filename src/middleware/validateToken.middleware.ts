@@ -15,6 +15,7 @@ export function validateTokenMiddleware(
   next: NextFunction
 ): void {
   const token = req.headers.authorization;
+  console.log(token);
   if (!token) {
     res.status(401).send("Unauthorized");
     return;
