@@ -20,7 +20,8 @@ export function validateTokenMiddleware(
     res.status(401).send("Unauthorized");
     return;
   }
-  if (token !== "Bearer token") {
+  const head = token.split(" ");
+  if (head[0] !== "Bearer") {
     res.status(401).send("Unauthorized");
     return;
   }
