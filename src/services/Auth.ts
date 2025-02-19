@@ -6,7 +6,7 @@ dotenv.config();
 const serviceCore = process.env.SERVICE_CORE;
 
 export async function validateToken(token: string): Promise<any> {
-  const url = `${serviceCore}/api/validate`;
+  const url = `${serviceCore}/api/validate-token`;
   console.log(url);
   try {
     const response = await axios.get(url, {
